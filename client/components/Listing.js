@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 
-// listing component queries DB to grab all approriate listing from either finalRound, tech, phone, or applied
+// when ^ click is clicked listing be called in phone interview as a listing, and this listing will be deleted
 
 function Listing(props) {  
+    // console.log(`this is from listing`,props.jobListing[props.id])
     return(
         <div>
-            <span>{props.jobListings[props.id].company}</span>
-            <button>^</button>
+            <span>{props.jobListing[props.id].company}</span>
+            <button onClick={() => {
+                const currListing = {...props.jobListing[props.id]};
+                return props.switchFunc(currListing)}}>^</button>
             <button>v</button>
             <button>X</button>
         </div>

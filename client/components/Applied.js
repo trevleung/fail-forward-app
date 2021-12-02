@@ -3,11 +3,12 @@ import Listing from './Listing';
 
 function Applied (props) {
     const newListing = [];
-    for (let i = 0; i < props.jobListings.length; i++) {
+    for (let i = 0; i < props.applied.length; i++) {
         newListing.push(<Listing 
             key={i}
             id={i}
-            jobListings={props.jobListings}
+            jobListing={props.applied}
+            switchFunc={props.handleSwitchToPhone}
         />)
     }
     return(

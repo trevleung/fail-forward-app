@@ -5,19 +5,26 @@ import Phone from './Phone';
 import Applied from './Applied';
 
 function UserData(props) {
+    console.log(props)
     return(
         <div>
             <div>
-                <FinalRound jobListings={props.jobListings} />
+                <FinalRound finalRound={props.finalRound} />
             </div>
             <div>
-                <Technical jobListings={props.jobListings} />
+                <Technical 
+                technical={props.technical}
+                handleSwitchToFinalRound={props.handleSwitchToFinalRound} />
             </div>
             <div>
-                <Phone jobListings={props.jobListings} />
+                <Phone 
+                phone={props.phone}
+                handleSwitchToTechnical={props.handleSwitchToTechnical} />
             </div>
             <div>
-                <Applied jobListings={props.jobListings} />
+                <Applied 
+                applied={props.applied} 
+                handleSwitchToPhone={props.handleSwitchToPhone} />
             </div>
         </div>
     )
