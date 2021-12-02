@@ -14,6 +14,7 @@ function Listing(props) {
                 const currentListing = {...props.jobListing[props.id]};
                 return props.downFunc(currentListing, props.id, props.level)}}>v</button>
             <button onClick={() => props.deleteListing(props.level, props.id)}>X</button>
+            <button onClick={() => props.createCookie(props.level, props.id)}>?</button>
         </div>
     )
 }

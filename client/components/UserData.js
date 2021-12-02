@@ -12,7 +12,8 @@ function UserData(props) {
                 <FinalRound finalRound={props.finalRound}
                 conversionFinalRound={props.conversionFinalRound}
                 handleSwitchToTechnical={props.handleSwitchToTechnical}
-                deleteListing={props.deleteListing} />
+                deleteListing={props.deleteListing}
+                createCookie={props.createCookie} />
             </div>
             <div>
                 <Technical 
@@ -20,7 +21,8 @@ function UserData(props) {
                 handleSwitchToFinalRound={props.handleSwitchToFinalRound}
                 handleSwitchToPhone={props.handleSwitchToPhone}
                 conversionTechnical={props.conversionTechnical}
-                deleteListing={props.deleteListing} />
+                deleteListing={props.deleteListing}
+                createCookie={props.createCookie} />
             </div>
             <div>
                 <Phone 
@@ -28,13 +30,15 @@ function UserData(props) {
                 handleSwitchToTechnical={props.handleSwitchToTechnical}
                 conversionPhone={props.conversionPhone}
                 handleSwitchtoApplied={props.handleSwitchtoApplied}
-                deleteListing={props.deleteListing} />
+                deleteListing={props.deleteListing}
+                createCookie={props.createCookie} />
             </div>
             <div>
                 <Applied 
                 applied={props.applied} 
                 handleSwitchToPhone={props.handleSwitchToPhone}
-                deleteListing={props.deleteListing} />
+                deleteListing={props.deleteListing}
+                createCookie={props.createCookie} />
             </div>
         </div>
     )

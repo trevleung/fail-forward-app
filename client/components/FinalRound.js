@@ -10,7 +10,8 @@ function FinalRound(props) {
             jobListing={props.finalRound}
             downFunc={props.handleSwitchToTechnical}
             deleteListing={props.deleteListing}
-            level='finalRound' />)
+            level='finalRound'
+            createCookie={props.createCookie} />)
     }
     return(
         <div>

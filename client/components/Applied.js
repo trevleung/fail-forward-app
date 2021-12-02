@@ -10,7 +10,8 @@ function Applied (props) {
             jobListing={props.applied}
             switchFunc={props.handleSwitchToPhone}
             deleteListing={props.deleteListing}
-            level='applied' />)
+            level='applied'
+            createCookie={props.createCookie} />)
     }
     return(
         <div>

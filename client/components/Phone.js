@@ -12,7 +12,8 @@ function Phone(props) {
             switchFunc={props.handleSwitchToTechnical}
             downFunc={props.handleSwitchtoApplied}
             deleteListing={props.deleteListing}
-            level='phone' />)
+            level='phone'
+            createCookie={props.createCookie} />)
     }
 
     return(

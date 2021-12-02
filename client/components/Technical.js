@@ -12,7 +12,8 @@ function Technical(props) {
             switchFunc={props.handleSwitchToFinalRound}
             downFunc={props.handleSwitchToPhone}
             deleteListing={props.deleteListing}
-            level='technical' />)
+            level='technical'
+            createCookie={props.createCookie} />)
     }
 
     return(

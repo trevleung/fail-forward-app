@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Input from './Input';
 import UserData from './UserData';
+import Cookie from './Cookie';
 
 import logo1 from './assets/fail.png';
 import logo2 from './assets/forward.png';
+
 
 function App() {
 
@@ -15,6 +17,7 @@ function App() {
     const [ conversionPhone, conversionPhoneFunc ] = useState(0)
     const [ conversionTechnical, conversionTechnicalFunc ] = useState(0)
     const [ conversionFinalRound, conversionFinalRoundFunc ] = useState(0)
+    const [ cookie, pushIntoCookie ] = useState([])
 
 
     function getData(data) {
@@ -125,6 +128,12 @@ function App() {
         }
     }
 
+    function createCookie(level, id) {
+        console.log('this is cookie', cookie);
+        pushIntoCookie([...cookie, 'cookie']);
+        deleteListing(level, id);
+
+    }
 
     if (login === true) {
         return(
@@ -148,7 +157,11 @@ function App() {
                     handleSwitchToTechnical={handleSwitchToTechnical}
                     handleSwitchToFinalRound={handleSwitchToFinalRound}
                     handleSwitchtoApplied={handleSwitchtoApplied}
-                    deleteListing={deleteListing} />
+                    deleteListing={deleteListing} 
+                    createCookie={createCookie} />
+                </div>
+                <div>
+                    <Cookie cookie={cookie}/>
                 </div>
             </div>
         )} else {
