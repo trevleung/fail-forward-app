@@ -46,7 +46,8 @@ module.exports = {
         compress: true,
         port: 8080,
         proxy: {
-            '/api': 'http://localhost:3000/api/'
+            '/api/': 'http://localhost:3000/api/',
+            '/login/': 'http://localhost:3000/login/'
         }
     }
 }

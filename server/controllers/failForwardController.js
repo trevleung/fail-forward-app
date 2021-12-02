@@ -40,5 +40,17 @@ failForwardController.updateJobListing = (req, res, next) => {
     
 }
 
+failForwardController.login = (req, res, next) => {
+    params = [ req.body.username, req.body.password ]
+    text = 
+    `SELECT 1
+    FROM public.users
+    WHERE username = $1 AND password = $2;`
+    db.query(text, params)
+        .then((receive) => {
+            res.locals.authen = receive;
+            return next();
+        })
+}
 
 module.exports = failForwardController;

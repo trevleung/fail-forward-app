@@ -35,6 +35,16 @@ function App() {
             })
     }
 
+    function postAuthen(data) {
+        fetch("http://localhost:8080/login/", {
+            method: "POST",
+            body: JSON.stringify({
+                    username: document.querySelector('#username').value,
+                    password: document.querySelector('#password').value,
+                })
+            })
+    }
+
     function updateData(data) {
 
     }
@@ -147,6 +157,10 @@ function App() {
                     <img src={logo1} alt='logo1' height='100'></img>
                     <img src={logo2} alt='logo2' height='100'></img>
                     <h1>Login Here</h1>
+                    <p>Username: </p>
+                    <input className='login' id='username' />
+                    <p>Password: </p>
+                    <input className='login' id='password' />
                     <button onClick={handleLogin}>X</button>
                 </div>
             )
