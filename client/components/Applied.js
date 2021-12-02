@@ -9,7 +9,8 @@ function Applied (props) {
             id={i}
             jobListing={props.applied}
             switchFunc={props.handleSwitchToPhone}
-        />)
+            deleteListing={props.deleteListing}
+            level='applied' />)
     }
     return(
         <div>

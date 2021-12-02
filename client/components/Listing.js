@@ -9,9 +9,11 @@ function Listing(props) {
             <span>{props.jobListing[props.id].company}</span>
             <button onClick={() => {
                 const currListing = {...props.jobListing[props.id]};
-                return props.switchFunc(currListing)}}>^</button>
-            <button>v</button>
-            <button>X</button>
+                return props.switchFunc(currListing, props.id, props.level)}}>^</button>
+            <button onClick={() => {
+                const currentListing = {...props.jobListing[props.id]};
+                return props.downFunc(currentListing, props.id, props.level)}}>v</button>
+            <button onClick={() => props.deleteListing(props.level, props.id)}>X</button>
         </div>
     )
 }

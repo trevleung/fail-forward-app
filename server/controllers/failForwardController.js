@@ -2,14 +2,43 @@ const db = require('../models/failForwardModels')
 
 const failForwardController = {};
 
-failForwardController.getFinalRound = (req, res, next) => {
 
+
+failForwardController.getState = (req, res, next) => {
+    console.log('reached get state')
+    const text = 
+    `SELECT * FROM public.users u
+    LEFT OUTER JOIN public.job_listings jl ON u._id = jl.user_id;`
+    db.query(text)
+        .then((received) => {
+            res.locals.listings = received;
+            return next();
+        })
 }
-
 
 failForwardController.addJobListing = (req, res, next) => {
-    // const params = [ req.body. ]
-    // const text = 
-    // `INSERT INTO users ()
-    // VALUES `
+    console.log(req.body);
+    const params = [ 
+        req.body.company, 
+        req.body.position, 
+        req.body.summary,
+        req.body.core_values,
+        '1', //FIXME: need to query db to find current user id
+        'applied' ]
+    const text = 
+    `INSERT INTO public.job_listing ()
+    VALUES $1 $2 $3 $4 $5 $6`
+    qb.query(text, params)
+        .then(received => next())
 }
+
+failForwardController.deleteJobListing = (req, res, next) => {
+
+}
+
+failForwardController.updateJobListing = (req, res, next) => {
+    
+}
+
+
+module.exports = failForwardController;

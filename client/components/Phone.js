@@ -10,12 +10,15 @@ function Phone(props) {
             id={i}
             jobListing={props.phone}
             switchFunc={props.handleSwitchToTechnical}
-        />)
+            downFunc={props.handleSwitchtoApplied}
+            deleteListing={props.deleteListing}
+            level='phone' />)
     }
 
     return(
         <div>
             <h2>Phone Interview</h2>
+            <span>Converion Rates {props.conversionPhone}%</span>
             {newListing}
         </div>
     )

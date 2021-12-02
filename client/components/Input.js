@@ -16,7 +16,9 @@ function Input (props) {
             <textarea className='inputBox' id='summary' type='text' cols='30' rows='6'></textarea>
             <p>Company Core Values: </p>
             <textarea className='inputBox' id='coreValues' type='text' cols='30' rows='6'></textarea>
-            <button onClick={props.handleClick}>Submit</button>
+            <button onClick={(() => {
+                props.postData()
+                props.handleClick()})}>Submit</button>
         </div>
     )
     

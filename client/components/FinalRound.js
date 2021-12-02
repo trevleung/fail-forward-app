@@ -7,11 +7,15 @@ function FinalRound(props) {
         newListing.push(<Listing 
             key={i}
             id={i}
-            jobListing={props.finalRound}/>)
+            jobListing={props.finalRound}
+            downFunc={props.handleSwitchToTechnical}
+            deleteListing={props.deleteListing}
+            level='finalRound' />)
     }
     return(
         <div>
             <h2>Final Round</h2>
+            <span>Converion Rates {props.conversionFinalRound}%</span>
             {newListing}
         </div>
     )
