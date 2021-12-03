@@ -19,7 +19,7 @@ function Phone(props) {
     return(
         <div>
             <h2>Phone Interview</h2>
-            <span>Converion Rates {props.conversionPhone}%</span>
+            <span className='conv'>Converion Rates {props.conversionPhone}%</span>
             {newListing}
         </div>
     )

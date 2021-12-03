@@ -19,7 +19,7 @@ function Technical(props) {
     return(
         <div>
             <h2>Technical Interview</h2>
-            <span>Converion Rates {props.conversionTechnical}%</span>
+            <span className='conv'>Converion Rates {props.conversionTechnical}%</span>
             {newListing}
         </div>
     )

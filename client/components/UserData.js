@@ -5,17 +5,16 @@ import Phone from './Phone';
 import Applied from './Applied';
 
 function UserData(props) {
-    console.log(props)
     return(
-        <div>
-            <div>
+        <div className='split right'>
+            <div className='centered2'>
                 <FinalRound finalRound={props.finalRound}
                 conversionFinalRound={props.conversionFinalRound}
                 handleSwitchToTechnical={props.handleSwitchToTechnical}
                 deleteListing={props.deleteListing}
                 createCookie={props.createCookie} />
             </div>
-            <div>
+            <div className='centered2'>
                 <Technical 
                 technical={props.technical}
                 handleSwitchToFinalRound={props.handleSwitchToFinalRound}
@@ -24,7 +23,7 @@ function UserData(props) {
                 deleteListing={props.deleteListing}
                 createCookie={props.createCookie} />
             </div>
-            <div>
+            <div className='centered2'>
                 <Phone 
                 phone={props.phone}
                 handleSwitchToTechnical={props.handleSwitchToTechnical}
@@ -33,7 +32,7 @@ function UserData(props) {
                 deleteListing={props.deleteListing}
                 createCookie={props.createCookie} />
             </div>
-            <div>
+            <div className='centered2'>
                 <Applied 
                 applied={props.applied} 
                 handleSwitchToPhone={props.handleSwitchToPhone}

@@ -20,15 +20,18 @@ function App() {
     const [ cookie, pushIntoCookie ] = useState([])
 
 
-    function getData(data) {
-        fetch("http://localhost:8080/api/")
+    function getDataApplied() {
+        return fetch("http://localhost:8080/api/")
             .then((receive) => receive.json())
-            .then((data) => data);
+            .then((data) => {
+                console.log(data);
+                pushToApplied(data)});
     }
 
-    function postData(data) {
+    function postData() {
         fetch("http://localhost:8080/api/", {
             method: "POST",
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                     company: document.querySelector('#company').value,
                     position: document.querySelector('#position').value,
@@ -38,13 +41,22 @@ function App() {
             })
     }
 
-    function postAuthen(data) {
+    function postAuthen() {
+        console.log(document.querySelector('#username').value)
+        console.log(document.querySelector('#password').value)
         fetch("http://localhost:8080/login/", {
             method: "POST",
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                     username: document.querySelector('#username').value,
                     password: document.querySelector('#password').value,
-                })
+                }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data[0]) {
+                    loginProcess(true);
+                }
             })
     }
 
@@ -56,10 +68,6 @@ function App() {
 
     }
 
-    function handleLogin() {
-        loginProcess(true);
-    }
-
 
     function handleClick() {
         const newL = {
@@ -69,6 +77,13 @@ function App() {
             coreValues: document.querySelector('#coreValues').value
         }
         pushToApplied([...applied, newL]);
+        const length1 = finalRound.length;
+        const length2 = technical.length;
+        const length3 = phone.length;
+        const length4 = applied.length;
+        conversionFinalRoundFunc(Math.round((length1) / (length2 + length3 + length4 + length1 + 1) * 100))
+        conversionTechnicalFunc(Math.round((length2) / (length3 + length4 + length2 + 1) * 100));
+        conversionPhoneFunc(Math.round((length3) / (length4 + length3 + 1) * 100));
     }
     
     function handleSwitchtoApplied(obj, id, from) {
@@ -76,7 +91,7 @@ function App() {
         const length2 = applied.length;
         pushToApplied([...applied, obj]);
         if (from === 'phone') deleteListing('phone', id);
-        conversionPhoneFunc((length1 + 1) / (length2 + length1 + 1) * 100);
+        conversionPhoneFunc(Math.round((length1 + 1) / (length2 + length1 + 1) * 100));
     }
 
     function handleSwitchToPhone(obj, id, from) {
@@ -85,7 +100,7 @@ function App() {
         pushToPhone([...phone, obj]);
         if (from === 'applied') deleteListing('applied', id);
         if (from === 'technical') deleteListing('technical', id);
-        conversionPhoneFunc((length1 + 1) / (length2 + length1 + 1) * 100);
+        conversionPhoneFunc(Math.round((length1 + 1) / (length2 + length1 + 1) * 100));
     }
 
     function handleSwitchToTechnical(obj, id, from) {
@@ -95,7 +110,7 @@ function App() {
         pushToTechnical([...technical, obj]);
         if (from === 'finalRound') deleteListing('finalRound', id);
         if (from === 'phone') deleteListing('phone', id);
-        conversionTechnicalFunc((length1 + 1) / (length2 + length3 + length1 + 1) * 100);
+        conversionTechnicalFunc(Math.round((length1 + 1) / (length2 + length3 + length1 + 1) * 100));
     }
 
     function handleSwitchToFinalRound(obj, id, from) {
@@ -105,26 +120,42 @@ function App() {
         const length4 = applied.length;
         pushToFinalRound([...finalRound, obj]);
         if (from === 'technical') deleteListing('technical', id);
-        conversionFinalRoundFunc((length1 + 1) / (length2 + length3 + length4 + length1 + 1) * 100);;
+        conversionFinalRoundFunc(Math.round((length1 + 1) / (length2 + length3 + length4 + length1 + 1) * 100));
     }
 
     function deleteListing(level, index) {
+        const length1 = finalRound.length;
+        const length2 = technical.length;
+        const length3 = phone.length;
+        const length4 = applied.length;
         if (level === 'applied') {
             const newApplied = [...applied];
             newApplied.splice(index, 1);
             pushToApplied(newApplied);
+            conversionFinalRoundFunc(Math.round((length1) / (length2 + length3 + length4 + length1 - 1) * 100))
+            conversionTechnicalFunc(Math.round((length2) / (length3 + length4 + length2 - 1) * 100));
+            conversionPhoneFunc(Math.round((length3) / (length4 + length3 - 1) * 100));
         } else if (level === 'phone') {
             const newPhone = [...phone];
             newPhone.splice(index, 1);
             pushToPhone(newPhone);
+            conversionFinalRoundFunc(Math.round((length1) / (length2 + length3 + length4 + length1 - 1) * 100))
+            conversionTechnicalFunc(Math.round((length2) / (length3 + length4 + length2 - 1) * 100));
+            conversionPhoneFunc(Math.round((length3 - 1) / (length4 + length3 - 1) * 100));
         } else if (level === 'technical') {
             const newTechnical = [...technical];
             newTechnical.splice(index, 1);
             pushToTechnical(newTechnical);
+            conversionFinalRoundFunc(Math.round((length1) / (length2 + length3 + length4 + length1 - 1) * 100))
+            conversionTechnicalFunc(Math.round((length2 - 1) / (length3 + length4 + length2 - 1) * 100));
+            conversionPhoneFunc(Math.round((length3) / (length4 + length3 - 1) * 100));
         } else if (level === 'finalRound') {
             const newFinalRound = [...finalRound];
             newFinalRound.splice(index, 1);
             pushToFinalRound(newFinalRound);
+            conversionFinalRoundFunc(Math.round((length1 - 1) / (length2 + length3 + length4 + length1 - 1) * 100))
+            conversionTechnicalFunc(Math.round((length2) / (length3 + length4 + length2 - 1) * 100));
+            conversionPhoneFunc(Math.round((length3) / (length4 + length3 - 1) * 100));
         }
     }
 
@@ -132,7 +163,9 @@ function App() {
         console.log('this is cookie', cookie);
         pushIntoCookie([...cookie, 'cookie']);
         deleteListing(level, id);
-
+        conversionFinalRoundFunc(Math.round((length1 - 1) / (length2 + length3 + length4 + length1 + 1) * 100))
+        conversionTechnicalFunc(Math.round((length2 - 1) / (length3 + length4 + length2 + 1) * 100));
+        conversionPhoneFunc(Math.round((length3 - 1) / (length4 + length3 + 1) * 100));
     }
 
     if (login === true) {
@@ -166,15 +199,18 @@ function App() {
             </div>
         )} else {
             return (
-                <div>
-                    <img src={logo1} alt='logo1' height='100'></img>
-                    <img src={logo2} alt='logo2' height='100'></img>
-                    <h1>Login Here</h1>
-                    <p>Username: </p>
-                    <input className='login' id='username' />
+                <div className='centered'>
+                    <img className='forward' src={logo1} alt='logo1' height='150'></img>
+                    <img src={logo2} alt='logo2' height='150'></img>
+                    <p id='usernameWord'>Username: </p>
+                    <input className='inputBar' id='username' />
                     <p>Password: </p>
-                    <input className='login' id='password' />
-                    <button onClick={handleLogin}>X</button>
+                    <input className='inputBar' type='password' id='password' />
+                    <div>
+                    <button data-title="Login" className='loginButton' onClick={() => {
+                        getDataApplied()
+                        postAuthen()}}></button>
+                    </div>
                 </div>
             )
         }

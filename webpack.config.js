@@ -43,11 +43,12 @@ module.exports = {
         // static: {
         //     directory: path.resolve('./'),
         // },
+        host: 'localhost',
         compress: true,
         port: 8080,
         proxy: {
-            '/api/': 'http://localhost:3000/api/',
-            '/login/': 'http://localhost:3000/login/'
+            '/api/': 'http://localhost:3000',
+            '/login/': 'http://localhost:3000'
         }
     }
 }

@@ -5,10 +5,10 @@ import logo2 from './assets/forward.png';
 
 function Input (props) {
     return(
-        <div>
-            <img src={logo1} alt='logo1' height='100'></img>
+        <div className='split left centered3'>
+            <img className='forward' src={logo1} alt='logo1' height='100'></img>
             <img src={logo2} alt='logo2' height='100'></img>
-            <p>Company: </p>
+            <p id='companyName'>Company: </p>
             <input className='inputBar' id='company' />
             <p>Position: </p>
             <input className='inputBar' id='position' />
@@ -16,9 +16,11 @@ function Input (props) {
             <textarea className='inputBox' id='summary' type='text' cols='30' rows='6'></textarea>
             <p>Company Core Values: </p>
             <textarea className='inputBox' id='coreValues' type='text' cols='30' rows='6'></textarea>
-            <button onClick={(() => {
-                props.postData()
-                props.handleClick()})}>Submit</button>
+            <div>
+                <button data-title="Submit" className='loginButton' onClick={(() => {
+                    props.postData()
+                    props.handleClick()})}></button>
+            </div>
         </div>
     )
     

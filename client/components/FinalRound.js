@@ -16,7 +16,7 @@ function FinalRound(props) {
     return(
         <div>
             <h2>Final Round</h2>
-            <span>Converion Rates {props.conversionFinalRound}%</span>
+            <span className='conv'>Converion Rates {props.conversionFinalRound}%</span>
             {newListing}
         </div>
     )
