@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path');
-const { Template } = require('webpack');
 
 module.exports = {
     mode: process.env.NODE_ENV,
@@ -43,12 +42,10 @@ module.exports = {
         // static: {
         //     directory: path.resolve('./'),
         // },
-        host: 'localhost',
         compress: true,
         port: 8080,
         proxy: {
-            '/api/': 'http://localhost:3000',
-            '/login/': 'http://localhost:3000'
+            '/': 'http://localhost:3000'
         }
     }
 }

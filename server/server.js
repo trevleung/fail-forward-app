@@ -10,13 +10,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, '../../fail-forward-app')));
 
 
-app.get('/', (req, res) => {
-    console.log('reached it');
-    return res.status(200).sendFile(path.join(__dirname, '../index.html'))
-});
+// app.get('/', (req, res) => {
+//     return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+// });
 
 app.use('/api/', apiRouters);
 

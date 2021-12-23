@@ -21,7 +21,7 @@ function App() {
 
 
     function getDataApplied() {
-        return fetch("http://localhost:8080/api/")
+        return fetch("http://localhost:8080/api/") // FIXME: when webpack serve is running, the proxy is on. But, when using npm start, webpack is not running so no proxy (therefore in production mode, it)
             .then((receive) => receive.json())
             .then((data) => {
                 console.log(data);
