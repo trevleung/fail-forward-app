@@ -1,5 +1,5 @@
 
-![](client/components/assets/fail.png)![](client/components/assets/foward.png)
+![](client/components/assets/fail.png) ![](client/components/assets/foward.png)
 Fail Forward is a application that tracks all of the conversions and keeps you motivated within in the job hunting process.
 There are 4 different stages job applications can be stored *Applied*, *Phone Interview*, *Technical Interview*, *Final Interview* where conversion rates can be found beside each stage. Fail forward offers Full CRUD operations with an easter egg ```?``` button that converts rejections into bitcoins.
 
