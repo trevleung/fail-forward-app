@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, '../../fail-forward-app')));
 
 app.use('/api/', apiRouters);
 
-app.post('/login/', failForwardController.login, (req, res) => {
+app.post('/login', failForwardController.login, (req, res) => {
     return res.status(200).send(res.locals.authen);
 });
 

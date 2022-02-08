@@ -42,8 +42,8 @@ failForwardController.updateJobListing = (req, res, next) => {
 }
 
 failForwardController.login = (req, res, next) => {
-    console.log('this is req');
-    console.log(req.body);
+    console.log('reached login controller');
+    // console.log(req.body);
     params = [ req.body.username, req.body.password ]
     text = 
     `SELECT 1
