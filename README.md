@@ -6,7 +6,11 @@ Database : You will need a POSTGRESQL URI. You can go to https://www.elephantsql
 ``` DB_URI = <your postgres URI>```
 
 1. clone this repo
-2. bundle react app with webpack by using the command
-```npm build```
+2. bundle react app with webpack by using the command \n
+```
+npm build
+```
 3. Start server and open localhost:3000 on the webpage
-```npm start```
+```
+npm start
+```
